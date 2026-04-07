@@ -1,0 +1,11 @@
+
+@if(isPlanetsEmpty) {
+  <p>No planets available.</p>
+}
+@else {
+  <select>
+    @for (planet of planets; track planet.id) {
+      <option value="{{ planet.id }}">{{ planet.name }}</option>
+    }
+  </select>
+}

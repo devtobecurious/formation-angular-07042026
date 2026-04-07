@@ -1,0 +1,18 @@
+<h2>{{ title }}</h2>
+
+@if(selfies.length == 0) {
+  <p>Aucun selfie disponible.</p>
+}
+
+@for(selfie of selfies; track selfie.id) {
+  <p>{{ selfie.title }}</p>
+  <div class="selfie">
+    <img src="{{ selfie.imageUrl }}" alt="{{ selfie.title }}" />
+  </div>
+}
+
+<!-- <p *ngFor="let selfie of selfies;">
+  {{ selfie }}
+</p>
+
+<p *ngIf="selfies.length === 0">Aucun selfie disponible.</p> -->
