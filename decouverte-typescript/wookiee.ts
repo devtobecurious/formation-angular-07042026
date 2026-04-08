@@ -3,15 +3,28 @@
 //     }
 // }
 
-// class Wookiee {
-//     name: string;
-//     age: number;
+class Ship {
+    name: string;
 
-//     constructor(name: string, age: number) {
-//         this.name = name;
-//         this.age = age;
-//     }
-// }
+    constructor(name: string) {
+        this.name = name;
+    }
+}
+
+class Wookiee {
+    name: string;
+    age: number;
+
+    ship: Ship; // = new Ship('Millennium Falcon');
+
+    constructor(name: string, age: number, ship: Ship) {
+        this.name = name;
+        this.age = age;
+        this.ship = ship;
+    }
+}
+
+const chewie = new Wookiee('Chewbacca', 200, new Ship('Millennium Falcon'));
 
 // const chewie = new Wookiee('Chewbacca', 200);
 // console.log(chewie.name);
@@ -30,12 +43,12 @@
 //     }
 // }
 
-interface Wookiee {
-    name: string;
-    age: number;
-}
+// interface Wookiee {
+//     name: string;
+//     age: number;
+// }
 
-const chewie: Wookiee = {
-    name: 'Chewbacca',
-    age: 200
-}
+// const chewie: Wookiee = {
+//     name: 'Chewbacca',
+//     age: 200
+// }
