@@ -7,6 +7,7 @@ export interface Selfie {
   id: number;
   title: string;
   description: string;
+  date: Date;
   imageUrl: string;
   wookiee: Wookiee;
 }

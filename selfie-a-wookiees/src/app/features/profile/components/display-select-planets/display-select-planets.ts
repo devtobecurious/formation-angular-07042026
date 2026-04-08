@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Planet } from '../../models/planet';
+import { GetAllPlanets } from '../../services/get-all-planets';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-display-select-planets',
@@ -7,13 +9,27 @@ import { Planet } from '../../models/planet';
   templateUrl: './display-select-planets.html',
   styleUrl: './display-select-planets.css',
 })
-export class DisplaySelectPlanets {
+export class DisplaySelectPlanets implements OnInit, OnDestroy {
+
+
   //protected readonly planets = ['Tatooine', 'Kashyyyk', 'Endor'];
-  protected readonly planets: Planet[] = [
-    { id: 1, name: 'Tatooine', size: 10465 },
-    { id: 2, name: 'Kashyyyk', size: 12765 },
-    { id: 3, name: 'Endor', size: 4900 },
-  ]
+  private readonly getAllPlanets = inject(GetAllPlanets);
+  private readonly parentSubscription = new Subscription();
+  protected readonly planets: Planet[] = []
+
+  ngOnInit(): void {
+    this.parentSubscription.add(
+      this.getAllPlanets.getAll().subscribe({
+        next: (planets) => {
+        this.planets.push(...planets);
+      }
+    })
+  );
+  }
+
+  ngOnDestroy(): void {
+    this.parentSubscription.unsubscribe();
+  }
 
   get isPlanetsEmpty(): boolean {
     return this.planets.length === 0;
