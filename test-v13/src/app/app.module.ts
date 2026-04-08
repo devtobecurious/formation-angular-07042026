@@ -3,13 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DisplaySelfiesComponent } from './features/selfies/selfies/components/display-selfies/display-selfies.component';
+import { SelfiesModule } from './features/selfies/selfies/selfies.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
+    SelfiesModule,
     AppRoutingModule
   ],
   providers: [],

@@ -1,0 +1,7 @@
+@for (selfie of selfies; track selfie.id) {
+  <p>{{ selfie.title }}</p>
+  <p><button>Delete</button></p>
+}
+@empty {
+  <i>Aucun selfie disponible</i>
+}
