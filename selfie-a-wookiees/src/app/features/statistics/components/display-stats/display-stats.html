@@ -5,10 +5,22 @@
     <td>Mois</td>
   </thead>
   <tbody>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
+    @for(stat of list; track stat) {
+      <tr>
+        <td>{{ stat.selfie.title }}</td>
+        <td>{{ stat.year }}</td>
+        <td>{{ stat.month }}</td>
+      </tr>
+    }
+    @empty {
+      <tr>
+        <td colspan="3">Aucun selfie n'a été pris</td>
+      </tr>
+    }
   </tbody>
 </table>
+
+<app-paginate [nbItemsPerPage]="1" [totalItems]="list.length"></app-paginate>
+
+
+

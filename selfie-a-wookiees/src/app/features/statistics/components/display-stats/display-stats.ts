@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { GetAllStats } from '../../services/get-all-stats';
 import { Statistics } from '../../models/statistic';
+import { Paginate } from '../../../../shared/ui/table/components/paginate/paginate';
 
 @Component({
   selector: 'app-display-stats',
-  imports: [],
+  imports: [Paginate],
   templateUrl: './display-stats.html',
   styleUrl: './display-stats.css',
 
