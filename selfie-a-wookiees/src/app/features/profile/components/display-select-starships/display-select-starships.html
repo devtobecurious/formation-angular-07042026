@@ -1,0 +1,9 @@
+@let items = starships$ | async;
+
+@if(items) {
+  <select>
+    @for(item of items; track item.label) {
+      <option>{{ item.label }}</option>
+    }
+  </select>
+}

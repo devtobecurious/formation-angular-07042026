@@ -7,10 +7,12 @@ import { Observable } from 'rxjs';
 import { Header } from "./pages/layouts/components/header/header";
 import { GetCurrentWeather } from './shared/ui/weather/services/get-current-weather';
 import { Weather } from './shared/ui/weather/models/weather';
+import { HttpClient } from '@angular/common/http';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, DisplaySelfies, EditProfile, DisplayStats, Header],
+  imports: [RouterOutlet, DisplaySelfies, EditProfile, DisplayStats, Header, AsyncPipe],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
