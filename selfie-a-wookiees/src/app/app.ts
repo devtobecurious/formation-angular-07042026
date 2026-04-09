@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { DisplaySelfies } from './features/selfies/components/display-selfies/display-selfies';
 import { EditProfile } from "./features/profile/components/edit-profile/edit-profile";
@@ -15,7 +15,9 @@ import { Weather } from './shared/ui/weather/models/weather';
   styleUrl: './app.css'
 })
 export class App implements OnInit {
-  protected title = 'Bienvenue sur Selfie à Wookiees !';
+  protected readonly title = signal('Bienvenue sur Selfie à Wookiees !');
+  protected readonly majTitle = computed(() => this.title().toUpperCase());
+
   private readonly weatherService = inject(GetCurrentWeather);
 
   ngOnInit(): void {
@@ -40,7 +42,10 @@ export class App implements OnInit {
 
     observable.subscribe({
       next: (value) => {
-        this.title = 'Observable next callback with value:' + value;
+        //this.title = 'Observable next callback with value:' + value;
+
+        //this.title.set('Observable next callback with value:' + value);
+        this.title.update((current) => current + ' - ' + value);
       }
     });
 
