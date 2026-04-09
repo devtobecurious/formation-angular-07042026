@@ -4,7 +4,7 @@
 }
 @else {
   <select>
-    @for (planet of planets; track planet.id) {
+    @for (planet of planetsSignal(); track planet.id) {
       <option value="{{ planet.id }}">{{ planet.name }}</option>
     }
   </select>
