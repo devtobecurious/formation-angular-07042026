@@ -1,23 +1,33 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Weather } from '../models/weather';
 
 @Injectable({
-  providedIn: null,
+  providedIn: 'root',
 })
 export class GetCurrentWeather {
-  private readonly weather$ = new Observable<Weather>((observer) => {
-        const weather: Weather = {
-          value: 1, // Good weather conditions
-          temperature: 25, // Temperature in Celsius
-          planet: 'Earth', // Planet name
-        };
-        observer.next(weather);
-        observer.complete();
-    });
+  // private readonly weather$ = new Observable<Weather>((observer) => {
+  //       const weather: Weather = {
+  //         value: 1, // Good weather conditions
+  //         temperature: 25, // Temperature in Celsius
+  //         planet: 'Earth', // Planet name
+  //       };
+  //       observer.next(weather);
+  //       observer.complete();
+  //   });
+
+  private readonly weatherStore = new BehaviorSubject<Weather>({
+    value: 0, // Good weather conditions
+    temperature: 25, // Temperature in Celsius
+    planet: 'Earth', // Planet name
+  });
+
+  change(weather: Weather): void {
+    this.weatherStore.next(weather);
+  }
 
   getOne(): Observable<Weather> {
-    return this.weather$;
+    return this.weatherStore.asObservable();
   }
 
   // getOne(): Observable<Weather> {

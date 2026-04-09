@@ -9,13 +9,13 @@ export class ValueToWeatherTextPipe implements PipeTransform {
   transform(value: Weather, ...args: unknown[]): string {
     switch (value.value) {
       case -100:
-        return 'Extreme weather conditions';
+        return 'Extreme weather conditions ' + value.temperature;
       case -1:
-        return 'Poor weather conditions';
+        return 'Poor weather conditions ' + value.temperature;
       case 0:
-        return 'Neutral weather conditions';
+        return 'Neutral weather conditions ' + value.temperature;
       case 1:
-        return 'Good weather conditions';
+        return 'Good weather conditions ' + value.temperature;
       default:
         return 'Unknown weather conditions';
     }
