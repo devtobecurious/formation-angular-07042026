@@ -1,6 +1,6 @@
 <form>
   <app-display-select-planets></app-display-select-planets>
-  <app-display-list-selfies [selfies]="dataSelfies"></app-display-list-selfies>
+  <app-display-list-selfies [selfies]="dataSelfies" (deleteSelfie)="onDeleteSelfie($event)"></app-display-list-selfies>
 
   <button (click)="onSubmit()">Submit</button>
 </form>

@@ -1,6 +1,6 @@
-@for (selfie of selfies; track selfie.id) {
+@for (selfie of selfies(); track selfie.id) {
   <p>{{ selfie.title }}</p>
-  <p><button>Delete</button></p>
+  <p><button (click)="onDelete(selfie)">Delete</button></p>
 }
 @empty {
   <i>Aucun selfie disponible</i>
