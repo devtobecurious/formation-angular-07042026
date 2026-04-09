@@ -1,0 +1,27 @@
+@let weatherItem = weather$ | async;
+
+@if (weatherItem) {
+  <div>
+    <p>{{ weatherItem | valueToWeatherText }}</p>
+    <!-- @switch (weatherItem.value) {
+      @case (1) {
+        <p>Sunny</p>
+      }
+      @case (0) {
+        <p>Mitigé</p>
+      }
+      @case (-1) {
+        <p>Pluvieux</p>
+      }
+
+      @case (-100) {
+        <p>Tempête</p>
+      }
+      @default {
+        <p>Unknown weather condition</p>
+      }
+    } -->
+  </div>
+}
+
+
