@@ -15,8 +15,8 @@ import { Weather } from './shared/ui/weather/models/weather';
   styleUrl: './app.css'
 })
 export class App implements OnInit {
-  protected readonly title = signal('Bienvenue sur Selfie à Wookiees !');
-  protected readonly majTitle = computed(() => this.title().toUpperCase());
+ // protected readonly title = signal('Bienvenue sur Selfie à Wookiees !');
+  //protected readonly majTitle = computed(() => this.title().toUpperCase());
 
   private readonly weatherService = inject(GetCurrentWeather);
 
@@ -45,7 +45,7 @@ export class App implements OnInit {
         //this.title = 'Observable next callback with value:' + value;
 
         //this.title.set('Observable next callback with value:' + value);
-        this.title.update((current) => current + ' - ' + value);
+       // this.title.update((current) => current + ' - ' + value);
       }
     });
 

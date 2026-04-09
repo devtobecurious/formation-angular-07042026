@@ -1,5 +1,14 @@
 @let weatherItem = weather$ | async;
 
+@let weatherEarth = weatherOnEarth$ | async;
+
+@if(weatherEarth) {
+  <div>
+    <p>Temperature: {{ weatherEarth.current.temperature_2m }}°C</p>
+    <p>Wind Speed: {{ weatherEarth.current.wind_speed_10m }} m/s</p>
+  </div>
+}
+
 @if (weatherItem) {
   <div>
     <p>{{ weatherItem | valueToWeatherText }}</p>
