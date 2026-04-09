@@ -4,7 +4,7 @@
 <h1>{{ majTitle() }}</h1> -->
 
 <app-display-selfies />
-<app-edit-profile />
+<app-edit-profile (saveProfile)="onSaveProfile($event)" />
 
 <app-display-stats></app-display-stats>
 

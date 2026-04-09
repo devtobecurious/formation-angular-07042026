@@ -63,4 +63,8 @@ export class App implements OnInit {
     };
     this.weatherService.change(newWeather);
   }
+
+  onSaveProfile(wookieId: number): void {
+    console.info('Profile saved for wookiee with ID:', wookieId);
+  }
 }

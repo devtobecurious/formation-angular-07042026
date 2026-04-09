@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { DisplaySelectPlanets } from '../display-select-planets/display-select-planets';
 import { DisplayListSelfies } from '../display-list-selfies/display-list-selfies';
 import { GetSelfiesFromWookiee } from '../../services/get-selfies-from-wookiee';
@@ -14,4 +14,10 @@ export class EditProfile {
   private readonly getSelfiesFromWookiee = inject(GetSelfiesFromWookiee);
   protected readonly dataSelfies = this.getSelfiesFromWookiee.getAll(this.wookieId);
   //constructor(private readonly getSelfiesFromWookiee: GetSelfiesFromWookiee) {}
+
+  @Output() saveProfile = new EventEmitter<number>();
+
+  onSubmit(): void {
+    this.saveProfile.emit(this.wookieId);
+  }
 }
