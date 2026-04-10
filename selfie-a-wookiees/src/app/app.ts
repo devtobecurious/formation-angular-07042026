@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, computed, ElementRef, inject, OnInit, signal, untracked, viewChild, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
-import { provideRouter, RouterOutlet } from '@angular/router';
+import { provideRouter, RouterLink, RouterOutlet } from '@angular/router';
 import { DisplaySelfies } from './features/selfies/components/display-selfies/display-selfies';
 import { EditProfile } from "./features/profile/components/edit-profile/edit-profile";
 import { DisplayStats } from './features/statistics/components/display-stats/display-stats';
@@ -9,10 +9,11 @@ import { GetCurrentWeather } from './shared/ui/weather/services/get-current-weat
 import { Weather } from './shared/ui/weather/models/weather';
 import { HttpClient } from '@angular/common/http';
 import { AsyncPipe, NgClass } from '@angular/common';
+import { MaDirective } from "./ma-directive";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, DisplaySelfies, EditProfile, DisplayStats, Header, AsyncPipe, NgClass],
+  imports: [RouterOutlet, RouterLink, DisplaySelfies, EditProfile, DisplayStats, Header, AsyncPipe, NgClass, MaDirective],
   templateUrl: './app.html',
   styleUrl: './app.css',
   encapsulation: ViewEncapsulation.Emulated
