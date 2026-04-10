@@ -1,0 +1,6 @@
+<form class="add-new-stat-rf" [formGroup]="statForm" (ngSubmit)="onSubmit()">
+   <label for="selfieId">Selfie ID</label>
+   <select id="selfieId" formControlName="selfieId" ></select>
+
+   <button type="submit" [disabled]="statForm.invalid">Add Stat</button>
+</form>
