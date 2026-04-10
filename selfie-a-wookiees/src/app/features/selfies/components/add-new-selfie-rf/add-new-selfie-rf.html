@@ -1,0 +1,9 @@
+<form [formGroup]="selfieForm"  (ngSubmit)="onSubmit()" >
+  <label for="selfie-name">Name:</label>
+  <input id="selfie-name" formControlName="title" type="text" />
+
+  <label for="selfie-description">Description:</label>
+  <textarea id="selfie-description" formControlName="description"></textarea>
+
+  <button type="submit" [disabled]="selfieForm.invalid">Add Selfie</button>
+</form>
