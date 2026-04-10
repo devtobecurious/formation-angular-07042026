@@ -24,6 +24,9 @@
                 "input": "public"
               }
             ],
+            "scripts": [
+
+            ],
             "styles": [
               "src/styles.css"
             ]

@@ -2,8 +2,10 @@
 
 @let value = title();
 
-<h1>{{ title() }}</h1>
-<h1>{{ majTitle() }}</h1>
+<h1 style="background-color: beige;">{{ title() }}</h1>
+<h1 [style.background-color]="'beige'">{{ majTitle() }}</h1>
+
+<h2 [ngClass]="" [style]="style()"></h2>
 
 <app-display-selfies />
 <app-edit-profile (saveProfile)="onSaveProfile($event)" />

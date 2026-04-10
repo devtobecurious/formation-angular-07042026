@@ -1,5 +1,5 @@
-import { Component, computed, inject, OnInit, signal, untracked } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, computed, inject, OnInit, signal, untracked, ViewEncapsulation } from '@angular/core';
+import { provideRouter, RouterOutlet } from '@angular/router';
 import { DisplaySelfies } from './features/selfies/components/display-selfies/display-selfies';
 import { EditProfile } from "./features/profile/components/edit-profile/edit-profile";
 import { DisplayStats } from './features/statistics/components/display-stats/display-stats';
@@ -8,20 +8,23 @@ import { Header } from "./pages/layouts/components/header/header";
 import { GetCurrentWeather } from './shared/ui/weather/services/get-current-weather';
 import { Weather } from './shared/ui/weather/models/weather';
 import { HttpClient } from '@angular/common/http';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, DisplaySelfies, EditProfile, DisplayStats, Header, AsyncPipe],
+  imports: [RouterOutlet, DisplaySelfies, EditProfile, DisplayStats, Header, AsyncPipe, NgClass],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class App implements OnInit {
  protected readonly title = signal('Bienvenue sur Selfie à Wookiees !');
  protected readonly title2 = signal('bli !');
+
+ protected readonly style = signal({ backgroundColor: 'beige' });
+
  protected readonly majTitle = computed(() => {
   //const t2 = untracked(this.title2);
-
   return this.title().toUpperCase();
  });
 
