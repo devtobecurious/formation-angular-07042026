@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, signal, untracked, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, computed, ElementRef, inject, OnInit, signal, untracked, viewChild, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { provideRouter, RouterOutlet } from '@angular/router';
 import { DisplaySelfies } from './features/selfies/components/display-selfies/display-selfies';
 import { EditProfile } from "./features/profile/components/edit-profile/edit-profile";
@@ -17,7 +17,14 @@ import { AsyncPipe, NgClass } from '@angular/common';
   styleUrl: './app.css',
   encapsulation: ViewEncapsulation.Emulated
 })
-export class App implements OnInit {
+export class App implements OnInit, AfterViewInit {
+
+// @ViewChild('btnChangeWeather') btnChangeWeather: ElementRef<HTMLButtonElement> | undefined;
+// @ViewChildren(DisplayStats) displayStats: DisplayStats | undefined;
+
+btnChangeWeather =  viewChild<ElementRef<HTMLButtonElement>>('btnChangeWeather');
+
+
  protected readonly title = signal('Bienvenue sur Selfie à Wookiees !');
  protected readonly title2 = signal('bli !');
 
@@ -31,6 +38,8 @@ export class App implements OnInit {
   private readonly weatherService = inject(GetCurrentWeather);
 
   ngOnInit(): void {
+
+
     console.info('------------------------------');
 
     console.info('SYNC');
@@ -60,6 +69,10 @@ export class App implements OnInit {
     });
 
     console.info('********************');
+  }
+
+  ngAfterViewInit(): void {
+    //console.info('Button element:', this.btnChangeWeather?.nativeElement);
   }
 
   changeWeather(): void {

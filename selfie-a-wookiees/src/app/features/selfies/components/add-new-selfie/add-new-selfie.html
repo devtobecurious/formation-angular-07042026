@@ -1,0 +1,9 @@
+<form #addSelfieForm="ngForm">
+  <label for="selfie-name">Name:</label>
+  <input id="selfie-name" name="title" type="text" required minlength="3" [(ngModel)]="item.title" />
+
+  <label for="selfie-description">Description:</label>
+  <textarea id="selfie-description" name="description" required minlength="30" [(ngModel)]="item.description"></textarea>
+
+  <button type="submit" [disabled]="!addSelfieForm.form.valid">Add Selfie</button>
+</form>
