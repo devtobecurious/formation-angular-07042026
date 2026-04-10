@@ -10,6 +10,7 @@
     <div>{{ selfie | selfieToString }}</div>
     <i>Date : {{ selfie.date | date:'longDate' }}</i>
     <img src="{{ selfie.imageUrl }}" alt="{{ selfie.title }}" />
+    <img [src]="selfie.imageUrl" alt="{{ selfie.title }}" />
   </div>
 }
 

@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal, untracked } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { DisplaySelfies } from './features/selfies/components/display-selfies/display-selfies';
 import { EditProfile } from "./features/profile/components/edit-profile/edit-profile";
@@ -17,8 +17,13 @@ import { AsyncPipe } from '@angular/common';
   styleUrl: './app.css'
 })
 export class App implements OnInit {
- // protected readonly title = signal('Bienvenue sur Selfie à Wookiees !');
-  //protected readonly majTitle = computed(() => this.title().toUpperCase());
+ protected readonly title = signal('Bienvenue sur Selfie à Wookiees !');
+ protected readonly title2 = signal('bli !');
+ protected readonly majTitle = computed(() => {
+  //const t2 = untracked(this.title2);
+
+  return this.title().toUpperCase();
+ });
 
   private readonly weatherService = inject(GetCurrentWeather);
 

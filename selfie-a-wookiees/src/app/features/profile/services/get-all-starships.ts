@@ -7,7 +7,9 @@ import { map, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class GetAllStarships {
-  private readonly httpClient = inject(HttpClient );
+  private readonly httpClient = inject(HttpClient);
+
+  // constructor(private readonly http: HttpClient) {}
 
   getAll(): Observable<Starship[]> {
     return this.httpClient.get<ResultFromApi>('https://swapi.dev/api/starships/').pipe(
